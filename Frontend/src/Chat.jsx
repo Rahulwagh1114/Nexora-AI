@@ -10,6 +10,10 @@ function Chat() {
     const [latestReply, setLatestReply] = useState(null);
 
     useEffect(() => {
+        if (reply === null) {
+            setLatestReply(null)
+            return;
+        }
         if (!prevChats?.length) return;   //last chat jo ab ki latest ho us kelieye typing effect
         const content = reply.split(" ")  //indivial word
         let idx = 0
@@ -18,7 +22,7 @@ function Chat() {
             idx++;
             if (idx >= content.length) clearInterval(interval);
         }, 40)
-        return () => clearInterval(interval); 
+        return () => clearInterval(interval);
     }, [prevChats, reply]);
 
 
@@ -39,11 +43,21 @@ function Chat() {
                 }
 
                 {
-                    prevChats.length > 0 && latestReply !== null &&
-                    <div className='openAiDiv' key={"typing"}>
-                        <ReactMarkdown rehypePlugins={[rehypeHighlight]}>{latestReply}</ReactMarkdown>
-                    </div>
+                    prevChats.length > 0 && (
+                        <>
+                            {
+                                latestReply === null ? (<div className='openAiDiv' key={"non-typing"}>
+                                    <ReactMarkdown rehypePlugins={[rehypeHighlight]}>{prevChats[prevChats.length - 1].content}</ReactMarkdown>
+                                </div>) :
+                                    <div className='openAiDiv' key={"typing"}>
+                                        <ReactMarkdown rehypePlugins={[rehypeHighlight]}>{latestReply}</ReactMarkdown>
+                                    </div>
+                            }
+
+                        </>
+                    )
                 }
+
 
             </div>
         </>
