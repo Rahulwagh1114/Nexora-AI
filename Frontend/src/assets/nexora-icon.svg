@@ -1,0 +1,21 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="ring1" x1="10" y1="20" x2="90" y2="60" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFB05C"/>
+      <stop offset="100%" stop-color="#FF5F5F"/>
+    </linearGradient>
+    <linearGradient id="ring2" x1="90" y1="30" x2="10" y2="80" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#5FD8CE"/>
+      <stop offset="100%" stop-color="#4A9BFF"/>
+    </linearGradient>
+  </defs>
+
+  <!-- no background rect at all — fully transparent -->
+
+  <!-- two crossing orbits, meeting at a shared nexus point -->
+  <ellipse cx="50" cy="50" rx="30" ry="14" transform="rotate(-28 50 50)" fill="none" stroke="url(#ring1)" stroke-width="6"/>
+  <ellipse cx="50" cy="50" rx="30" ry="14" transform="rotate(28 50 50)" fill="none" stroke="url(#ring2)" stroke-width="6"/>
+
+  <!-- nexus point where they cross -->
+  <circle cx="50" cy="50" r="6" fill="#FFF6EA"/>
+</svg>
