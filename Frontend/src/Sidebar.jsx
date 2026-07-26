@@ -3,6 +3,7 @@ import './Sidebar.css';
 import { MyContext } from "./MyContext";
 import { useContext, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
+import TitleComponent from "./TitleComponent";
 
 
 function Sidebar() {
@@ -59,16 +60,13 @@ function Sidebar() {
   }
 
   return (
+   <div className="mainSidebar">
+     <TitleComponent src={nexoraIcon} createNewChat={createNewChat} />
     <section className='sidebar'>
-      <button onClick={createNewChat}>
-        <img src={nexoraIcon} className="logo" alt="Nexora-Ai-icon" />
-        <span> <i className="fa-solid fa-pen-to-square"></i></span>
-      </button>
-
       <ul className="history">
         {
           allThreads?.map((thread, idx) => (
-            <li key={idx} onClick={(e) => changeThread(thread.threadId)} className={thread.threadId===currThreadId?"highlighted":""} >{thread.title} <i className="fa-solid fa-trash" onClick={(e) => {
+            <li key={idx} onClick={(e) => changeThread(thread.threadId)} className={thread.threadId === currThreadId ? "highlighted" : ""} >{thread.title} <i className="fa-solid fa-trash" onClick={(e) => {
               e.stopPropagation();
               deleteThread(thread.threadId)
             }}></i></li>
@@ -76,10 +74,11 @@ function Sidebar() {
         }
       </ul>
 
-      <div className="sign">
+      {/* <div className="sign">
         <p>By rahul wagh</p>
-      </div>
+      </div> */}
     </section>
+      </div>
   )
 }
 

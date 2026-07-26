@@ -1,0 +1,47 @@
+ .titleSection{
+ background-color: #171717;
+    color:#b4b4b4;
+    height: 30%;
+    width:320px;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+ }
+ .title{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 1.2rem;
+    margin-left: 0.7rem;
+ }
+ button{
+    display: flex;
+    align-items: center;
+           /* FIXED width — sidebar width (320) minus margins */
+           /* FIXED height */
+    margin: 10px 0px 0px -4px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+button span{
+    font-size:1.2rem ;
+}
+
+.logo{
+    height: 45px;
+    width: 45px;
+    object-fit: contain;
+    flex-shrink: 0;   /* zaroori — taki flex container me icon squeeze na ho aur apna size maintain kare */
+}
+.additionalOption{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+}
+.additionalOption span{
+    line-height: 1rem !important;
+    font-size: 1rem !important;
+    margin: 10px;
+}
