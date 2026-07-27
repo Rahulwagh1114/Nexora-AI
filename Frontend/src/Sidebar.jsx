@@ -10,7 +10,7 @@ function Sidebar() {
   const { allThreads, setAllThreads, currThreadId, setNewChat, setPrompt, setReply, setCurrThreadId, setPrevChats } = useContext(MyContext);
   const getAllThreads = async () => {
     try {
-      const response = await fetch("http://localhost:5000/api/thread");
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/thread`);
       const res = await response.json();
       const filteredData = res.map(thread => ({ threadId: thread.threadId, title: thread.title }))
       setAllThreads(filteredData)
@@ -35,7 +35,7 @@ function Sidebar() {
     setCurrThreadId(newThreadId)
 
     try {
-      const response = await fetch(`http://localhost:5000/api/thread/${newThreadId}`)
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/thread/${newThreadId}`)
       const res = await response.json();
       setPrevChats(res);
       setNewChat(false);
@@ -47,7 +47,7 @@ function Sidebar() {
 
   const deleteThread = async (threadId) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/thread/${threadId}`, { method: "DELETE" });
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/${threadId}`, { method: "DELETE" });
       const res = await response.json();
       setAllThreads(prev => prev.filter(thread => thread.threadId !== threadId));
 
