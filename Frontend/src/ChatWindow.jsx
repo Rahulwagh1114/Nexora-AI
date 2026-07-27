@@ -83,7 +83,9 @@ function ChatWindow() {
             <div className='chatInput'>
                 <div className="inputBox">
                     <input type="text" placeholder="Ask anything" value={prompt} onChange={(e) => setPrompt(e.target.value)} onKeyDown={(e) => e.key === "Enter" ? getReply() : ""} ></input>
+                     <div id='plus'><i className="fa-solid fa-plus"></i></div>
                     <div id="submit" onClick={getReply}><i className="fa-solid fa-paper-plane"></i></div>
+                    <div id="mike"><i className="fa-solid fa-microphone"></i></div>
                 </div>
                 <p className='info'>
                     Nexora-AI can make mistakes. Checks important info. See cookie Preferences.

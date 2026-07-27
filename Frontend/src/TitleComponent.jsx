@@ -8,8 +8,12 @@ function TitleComponent({src,createNewChat}){
          <button onClick={createNewChat}>
                 <span> <i className="fa-solid fa-pen-to-square"></i> New Chat</span>
               </button>
-               <span><i className="fa-solid fa-wand-magic-sparkles"></i> Studio</span>
-                <span><i className="fa-solid fa-chart-column"></i> Insights</span>
+               <span className="span2"><i className="fa-solid fa-wand-magic-sparkles"></i> Studio</span>
+                <span className="span2"><i className="fa-solid fa-chart-column"></i> Insights</span>
+         </div>
+         <div className="recentsDiv">
+            <span >Recents</span>
+            <i className="fa-solid fa-sliders"></i>
          </div>
               </section>
     )

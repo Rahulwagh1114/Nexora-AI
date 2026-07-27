@@ -1,7 +1,7 @@
  .titleSection{
  background-color: #171717;
     color:#b4b4b4;
-    height: 30%;
+    height: 35%;
     width:320px;
     display: flex;
     flex-direction: column;
@@ -19,13 +19,27 @@
     align-items: center;
            /* FIXED width — sidebar width (320) minus margins */
            /* FIXED height */
-    margin: 10px 0px 0px -4px;
+    margin-top: 10px ;
     border: none;
     background-color: transparent;
     cursor: pointer;
+    width: 92%;
+   
 }
-button span{
-    font-size:1.2rem ;
+.titleSection button span{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+     height: 25px;
+    padding: 8px 10px;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: background-color 0.2s ease;
+}
+
+.titleSection button span:hover{
+    background-color: rgba(180, 180, 180, 0.05);
 }
 
 .logo{
@@ -41,7 +55,27 @@ button span{
     align-items: start;
 }
 .additionalOption span{
-    line-height: 1rem !important;
     font-size: 1rem !important;
-    margin: 10px;
+    margin-left: 10px;
+     padding: 1px 4px;
+}
+.additionalOption .span2{
+      width: 80%;
+    border: solid 10px transparent;
+
+}
+.additionalOption span:hover{
+    opacity: 1;
+    background-color: rgba(180, 180, 180, 0.05);
+    border-radius: 10px;
+}
+
+.recentsDiv{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 23px;
+    margin-right: 40px;
+    font-size: 12px;
+    opacity: 0.8;
+    margin-top:1.1rem ;
 }

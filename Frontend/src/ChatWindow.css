@@ -53,9 +53,9 @@ input{
     width: 100%;
     border: none;
     background-color: rgba(255,255,255,0.05);
-    padding: 20px;
+    padding: 20px 66px ;
     font-size: 0.8rem;
-    border-radius: 14px;
+    border-radius: 15px;
     box-shadow: rgba(0,0,0,0.05)0 54px 55px,
                rgba(0,0,0,0.05)0 -12px 30px,
                rgba(0,0,0,0.05)0 4px 6px,
@@ -66,12 +66,41 @@ input{
 input:focus{
     outline: none;
 }
+#plus{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 20px;
+    cursor: pointer;
+    padding: 5px;
+      border-radius: 50%;
+
+}
+
+#mike{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right:45px;
+      padding: 5px;
+      cursor: pointer;
+     border-radius: 50%;
+}
+ 
+#mike:hover{
+    background-color: rgb(92, 89, 89);
+}
+#plus:hover{
+     background-color: rgb(92, 89, 89);
+}
 #submit{
     height: 35px;
     width: 35px;
     font-size: 20px;
     position: absolute;
-    right: 15px;
+    right: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
