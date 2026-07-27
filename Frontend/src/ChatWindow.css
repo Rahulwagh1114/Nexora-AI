@@ -139,3 +139,67 @@ input:focus{
     background-color: rgba(180,180,180,0.1);
     border-radius: 6px;
 }
+
+@media (max-width: 768px) {
+  .navbar span {
+    margin: 0.8rem 1rem;
+    font-size: 0.95rem;
+  }
+  .userIconDiv {
+    margin: 0.8rem 1rem;
+  }
+  .chatInput {
+    padding: 0 0.5rem;
+  }
+  .inputBox {
+    max-width: 100%;
+  }
+  input {
+    padding: 16px 50px;
+    font-size: 0.85rem;
+  }
+  #plus {
+    left: 12px;
+  }
+  #mike {
+    right: 38px;
+  }
+  #submit {
+    right: 8px;
+    height: 30px;
+    width: 30px;
+    font-size: 17px;
+  }
+  .dropDown {
+    right: 1rem;
+    top: 3.5rem;
+    width: 130px;
+  }
+  .info {
+    font-size: 0.7rem;
+    padding: 0.4rem 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  input {
+    padding: 14px 44px;
+    font-size: 0.8rem;
+  }
+  #mike {
+    right: 32px;
+  }
+  #submit {
+    right: 6px;
+    height: 28px;
+    width: 28px;
+    font-size: 15px;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .navbar {
+    padding-left: 3rem;
+  }
+}

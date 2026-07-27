@@ -1,13 +1,15 @@
 import nexoraIcon from "./assets/nexora-icon.svg";
 import './Sidebar.css';
 import { MyContext } from "./MyContext";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import TitleComponent from "./TitleComponent";
 
 
 function Sidebar() {
   const { allThreads, setAllThreads, currThreadId, setNewChat, setPrompt, setReply, setCurrThreadId, setPrevChats } = useContext(MyContext);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
   const getAllThreads = async () => {
     try {
       const response = await fetch(`${import.meta.env.VITE_API_URL}/api/thread`);
@@ -47,7 +49,7 @@ function Sidebar() {
 
   const deleteThread = async (threadId) => {
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/${threadId}`, { method: "DELETE" });
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/thread/${threadId}`, { method: "DELETE" });
       const res = await response.json();
       setAllThreads(prev => prev.filter(thread => thread.threadId !== threadId));
 
@@ -57,28 +59,34 @@ function Sidebar() {
     } catch (err) {
       console.log(err);
     }
-  }
+}
 
   return (
-   <div className="mainSidebar">
-     <TitleComponent src={nexoraIcon} createNewChat={createNewChat} />
-    <section className='sidebar'>
-      <ul className="history">
-        {
-          allThreads?.map((thread, idx) => (
-            <li key={idx} onClick={(e) => changeThread(thread.threadId)} className={thread.threadId === currThreadId ? "highlighted" : ""} >{thread.title} <i className="fa-solid fa-trash" onClick={(e) => {
-              e.stopPropagation();
-              deleteThread(thread.threadId)
-            }}></i></li>
-          ))
-        }
-      </ul>
-
-      {/* <div className="sign">
-        <p>By rahul wagh</p>
-      </div> */}
-    </section>
+    <>
+      <div className="hamburgerBtn" onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
+        <i className="fa-solid fa-bars"></i>
       </div>
+
+      <div className={`mainSidebar ${isSidebarOpen ? "open" : ""}`}>
+        <TitleComponent src={nexoraIcon} createNewChat={createNewChat} />
+        <section className='sidebar'>
+          <ul className="history">
+            {
+              allThreads?.map((thread, idx) => (
+                <li key={idx} onClick={(e) => changeThread(thread.threadId)} className={thread.threadId === currThreadId ? "highlighted" : ""} >{thread.title} <i className="fa-solid fa-trash" onClick={(e) => {
+                  e.stopPropagation();
+                  deleteThread(thread.threadId)
+                }}></i></li>
+              ))
+            }
+          </ul>
+
+          {/* <div className="sign">
+            <p>By rahul wagh</p>
+          </div> */}
+        </section>
+      </div>
+    </>
   )
 }
 

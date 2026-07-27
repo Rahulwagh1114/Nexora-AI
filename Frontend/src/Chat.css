@@ -1,5 +1,5 @@
 .chats{
-    max-width: 700px;
+    max-width: 800px;
     padding: 8rem;
     overflow-y: scroll;
 }
@@ -61,3 +61,39 @@ pre{
     background-color: #5e5e5e;
 }
 
+@media (max-width: 1024px) {
+  .chats {
+    max-width: 100%;
+    padding: 4rem 2rem;
+  }
+  .userMessage {
+    margin-left: 8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .chats {
+    padding: 5rem 1rem 1rem;
+  }
+  .userMessage {
+    margin-left: 3rem;
+    max-width: 85%;
+  }
+  .userDiv, .openAiDiv {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .chats {
+    padding: 4.5rem 0.6rem 1rem;
+  }
+  .userMessage {
+    margin-left: 1.2rem;
+    max-width: 92%;
+    padding: 8px 14px;
+  }
+  .userDiv, .openAiDiv {
+    font-size: 0.8rem;
+  }
+}

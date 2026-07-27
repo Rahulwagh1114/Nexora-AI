@@ -30,9 +30,9 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    width: 100%;
-     height: 25px;
-    padding: 8px 10px;
+    width: 88%;
+     height: 25px !important;
+    padding: 20px 5px !important;
     border-radius: 10px;
     font-size: 1rem;
     transition: background-color 0.2s ease;
@@ -78,4 +78,49 @@
     font-size: 12px;
     opacity: 0.8;
     margin-top:1.1rem ;
+}
+
+@media (max-width: 1024px) {
+  .titleSection {
+    width: 240px;
+  }
+  .additionalOption span:hover{
+    opacity: 1;
+    background-color: rgba(180, 180, 180, 0.05);
+    border-radius: 10px;
+}
+}
+
+@media (max-width: 768px) {
+  .titleSection {
+    width: 200px;
+  }
+  .title {
+    font-size: 1rem;
+  }
+  .logo {
+    height: 36px;
+    width: 36px;
+  }
+  .additionalOption span {
+    font-size: 0.9rem !important;
+  }
+  .recentsDiv {
+    margin-right: 20px;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .titleSection {
+    width: 240px;
+    padding-top: 3rem;   /* hamburger button ke niche jagah ke liye */
+  }
+  
+}
+
+@media (max-width: 480px) {
+  .titleSection {
+    width: 200px;
+  }
 }
