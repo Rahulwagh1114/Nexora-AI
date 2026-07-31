@@ -87,7 +87,7 @@
     margin-right: 40px;
     font-size: 12px;
     opacity: 0.8;
-    margin-top:1.1rem ;
+    margin-top:0.2rem ;
     color: white !important;
 }
 #recentsDiv i{
@@ -100,6 +100,7 @@
 @media (max-width: 1024px) {
   .titleSection {
     width: 240px;
+   height: 35%;
   }
   .additionalOption span:hover{
     opacity: 1;
@@ -111,9 +112,17 @@
 @media (max-width: 768px) {
   .titleSection {
     width: 200px;
+    height: 35%;
   }
   .title {
     font-size: 1rem;
+    margin-left: 2.4rem;
+    margin-top: 5px;
+  }
+  .title i{
+    width: 34px;
+  height: 34px;
+  border-radius: 10px;
   }
   .logo {
     height: 36px;
@@ -131,7 +140,7 @@
 @media (max-width: 768px) {
   .titleSection {
     width: 240px;
-    padding-top: 3rem;
+    
   }
 }
 
