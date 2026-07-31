@@ -7,7 +7,7 @@ import TitleComponent from "./TitleComponent";
 
 
 function Sidebar() {
-  const { allThreads, setAllThreads, currThreadId, setNewChat, setPrompt, setReply, setCurrThreadId, setPrevChats } = useContext(MyContext);
+  const { allThreads, setAllThreads, currThreadId, setNewChat, setPrompt, setReply, setCurrThreadId, setPrevChats,searchQuery } = useContext(MyContext);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const getAllThreads = async () => {
@@ -61,6 +61,10 @@ function Sidebar() {
     }
 }
 
+const filteredThreads = allThreads?.filter(thread =>
+    thread.title.toLowerCase().includes(searchQuery.toLowerCase())
+);
+
   return (
     <>
       <div className="hamburgerBtn" onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
@@ -68,11 +72,12 @@ function Sidebar() {
       </div>
 
       <div className={`mainSidebar ${isSidebarOpen ? "open" : ""}`}>
-        <TitleComponent src={nexoraIcon} createNewChat={createNewChat} />
+        <TitleComponent createNewChat={createNewChat} />
         <section className='sidebar'>
+          
           <ul className="history">
             {
-              allThreads?.map((thread, idx) => (
+             filteredThreads?.map((thread, idx) => (
                 <li key={idx} onClick={(e) => changeThread(thread.threadId)} className={thread.threadId === currThreadId ? "highlighted" : ""} >{thread.title} <i className="fa-solid fa-trash" onClick={(e) => {
                   e.stopPropagation();
                   deleteThread(thread.threadId)

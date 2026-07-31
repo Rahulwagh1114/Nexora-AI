@@ -5,9 +5,10 @@ import { useContext, useState, useEffect } from 'react';
 import { ScaleLoader } from 'react-spinners';
 
 function ChatWindow() {
-    const { prompt, setPrompt, reply, setReply, currThreadId, prevChats, setPrevChats,setNewChat } = useContext(MyContext);
+    const { prompt, setPrompt, reply, setReply, currThreadId, prevChats, setPrevChats,setNewChat,searchQuery,setSearchQuery } = useContext(MyContext);
     const [loading, setLoading] = useState(false);
     const [isOpen,setIsOpen]=useState(false)
+    const [showSearch, setShowSearch] = useState(false);
 
 
     const getReply = async () => {
@@ -63,6 +64,14 @@ function ChatWindow() {
 
             <div className='navbar'>
                 <span>Nexora-AI <i className="fa-solid fa-angle-down"></i></span>
+
+                <div className='searchInputDiv'>
+                 {showSearch &&( <input id="searchInput" placeholder='Search chat' value={searchQuery} onChange={(e)=>setSearchQuery(e.target.value)}></input>)}
+                <i 
+            className="fa-solid fa-magnifying-glass searchIcon" 
+            onClick={() => setShowSearch(!showSearch)}
+        ></i></div>
+                 
                 <div className="userIconDiv" onClick={handleProfileClick}>
                     <span className='userIcon'><i className="fa-solid fa-user"></i></span>
                 </div>
@@ -78,11 +87,11 @@ function ChatWindow() {
              }
 
             <Chat />
-            <ScaleLoader color="#ffffff" loading={loading} />
+            <ScaleLoader color="#000" loading={loading} />
 
             <div className='chatInput'>
                 <div className="inputBox">
-                    <input type="text" placeholder="Ask anything" value={prompt} onChange={(e) => setPrompt(e.target.value)} onKeyDown={(e) => e.key === "Enter" ? getReply() : ""} ></input>
+                    <input id="promptInput" type="text" placeholder="Ask anything" value={prompt} onChange={(e) => setPrompt(e.target.value)} onKeyDown={(e) => e.key === "Enter" ? getReply() : ""} ></input>
                      <div id='plus'><i className="fa-solid fa-plus"></i></div>
                     <div id="submit" onClick={getReply}><i className="fa-solid fa-paper-plane"></i></div>
                     <div id="mike"><i className="fa-solid fa-microphone"></i></div>

@@ -13,6 +13,7 @@ function App() {
   const [prevChats,setPrevChats]=useState([])//stores all chat of aor curr thred
   const [newChat,setNewChat]=useState(true); 
   const [allThreads,setAllThreads]=useState([]);
+  const [searchQuery, setSearchQuery]=useState("")
 
   const providerValues={
     prompt,setPrompt,
@@ -20,7 +21,8 @@ function App() {
     currThreadId,setCurrThreadId,
     prevChats,setPrevChats,
     newChat,setNewChat,
-    allThreads,setAllThreads
+    allThreads,setAllThreads,
+    searchQuery,setSearchQuery
   };
 
   return (

@@ -1,6 +1,6 @@
- .titleSection{
- background-color: #171717;
-    color:#b4b4b4;
+.titleSection{
+    background-color: var(--bg-sidebar);
+    color:white;
     height: 35%;
     width:320px;
     display: flex;
@@ -13,41 +13,46 @@
     align-items: center;
     font-size: 1.2rem;
     margin-left: 0.7rem;
+    color: #ffffff;
+    font-weight: 550;
+ }
+ .title i{
+   width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, #7180ff, #8b5cf6);
+  margin: 10px;
  }
  button{
     display: flex;
     align-items: center;
-           /* FIXED width — sidebar width (320) minus margins */
-           /* FIXED height */
     margin-top: 10px ;
     border: none;
     background-color: transparent;
     cursor: pointer;
     width: 92%;
-   
 }
 .titleSection button span{
     display: flex;
     align-items: center;
     gap: 8px;
     width: 88%;
-     height: 25px !important;
+    height: 25px !important;
     padding: 20px 5px !important;
     border-radius: 10px;
     font-size: 1rem;
+    color: white;
     transition: background-color 0.2s ease;
+   font-weight: 550;
+     transition: 180ms ease;
 }
 
 .titleSection button span:hover{
-    background-color: rgba(180, 180, 180, 0.05);
+   background-color: rgba(255, 255, 255, 0.09);
 }
 
-.logo{
-    height: 45px;
-    width: 45px;
-    object-fit: contain;
-    flex-shrink: 0;   /* zaroori — taki flex container me icon squeeze na ho aur apna size maintain kare */
-}
 .additionalOption{
     display: flex;
     flex-direction: column;
@@ -57,20 +62,25 @@
 .additionalOption span{
     font-size: 1rem !important;
     margin-left: 10px;
-     padding: 1px 4px;
+    padding: 1px 4px;
+    color: white;
+     transition: 180ms ease;
+   font-weight: 550;
+   opacity: 0.8;
 }
 .additionalOption .span2{
-      width: 80%;
+    width: 80%;
     border: solid 10px transparent;
-
+     transition: 180ms ease;
+    
 }
 .additionalOption span:hover{
     opacity: 1;
-    background-color: rgba(180, 180, 180, 0.05);
+   background-color: rgba(255, 255, 255, 0.09);
     border-radius: 10px;
 }
 
-.recentsDiv{
+#recentsDiv{
     display: flex;
     justify-content: space-between;
     margin-left: 23px;
@@ -78,6 +88,13 @@
     font-size: 12px;
     opacity: 0.8;
     margin-top:1.1rem ;
+    color: white !important;
+}
+#recentsDiv i{
+  color: white;
+}
+#recentsDiv span{
+  color:white;
 }
 
 @media (max-width: 1024px) {
@@ -86,9 +103,9 @@
   }
   .additionalOption span:hover{
     opacity: 1;
-    background-color: rgba(180, 180, 180, 0.05);
+   background-color: rgba(255, 255, 255, 0.09);
     border-radius: 10px;
-}
+  }
 }
 
 @media (max-width: 768px) {
@@ -114,13 +131,16 @@
 @media (max-width: 768px) {
   .titleSection {
     width: 240px;
-    padding-top: 3rem;   /* hamburger button ke niche jagah ke liye */
+    padding-top: 3rem;
   }
-  
 }
 
 @media (max-width: 480px) {
   .titleSection {
     width: 200px;
   }
+}
+
+span i{
+  color: white;
 }

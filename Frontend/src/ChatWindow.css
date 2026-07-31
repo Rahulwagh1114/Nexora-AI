@@ -1,5 +1,5 @@
 .chatWindow{
-    background-color: #212121;
+    background-color: var(--bg-primary);
     height: 100vh;
     width:100%;
     display: flex;
@@ -7,23 +7,29 @@
     justify-content: space-between;
     align-items: center;
     text-align: center;
+    color: var(--text-primary);
+     background-color: #f4f4ff;
+    
 }
 .navbar{
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-   
+    height: 3.5rem;
+    border-bottom: 1px solid var(--border-subtle);
+    background-color: white;
 }
 .navbar span{
     margin: 1rem 2rem;
+    font-weight: 600;
 }
 .userIconDiv{
     margin: 1rem 2rem;
 }
 
 .userIcon{
-     background-color: #339cff;
+    background-color: var(--accent);
     height: 25px;
     width: 25px;
     border-radius: 50%;
@@ -31,7 +37,7 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
-
+    color: #fff;
 }
 .chatInput{
     width: 100%;
@@ -47,24 +53,22 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-
 }
-input{
+#promptInput{
     width: 100%;
-    border: none;
-    background-color: rgba(255,255,255,0.05);
+    border: 1px solid var(--border-subtle);
+    background-color: var(--bg-input);
+    color: var(--text-primary);
     padding: 20px 66px ;
     font-size: 0.8rem;
     border-radius: 15px;
-    box-shadow: rgba(0,0,0,0.05)0 54px 55px,
-               rgba(0,0,0,0.05)0 -12px 30px,
-               rgba(0,0,0,0.05)0 4px 6px,
-               rgba(0,0,0,0.05)0 12px 3px,
-              rgba(0,0,0,0.05)0 -3px 5px ;
-
+    box-shadow: rgba(0,0,0,0.03) 0 8px 20px;
+    background-color: #1a1a2e;
+    color: #fff;
 }
 input:focus{
     outline: none;
+    border-color: var(--accent);
 }
 #plus{
     position: absolute;
@@ -74,8 +78,9 @@ input:focus{
     left: 20px;
     cursor: pointer;
     padding: 5px;
-      border-radius: 50%;
-
+    border-radius: 50%;
+    color: var(--text-secondary);
+  
 }
 
 #mike{
@@ -84,16 +89,18 @@ input:focus{
     justify-content: center;
     align-items: center;
     right:45px;
-      padding: 5px;
-      cursor: pointer;
-     border-radius: 50%;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 50%;
+    color: var(--text-secondary);
 }
  
-#mike:hover{
-    background-color: rgb(92, 89, 89);
+#mike i:hover{
+     color: #4f46e5;
+    
 }
-#plus:hover{
-     background-color: rgb(92, 89, 89);
+#plus i:hover{
+      color: #4f46e5;
 }
 #submit{
     height: 35px;
@@ -105,14 +112,15 @@ input:focus{
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    color: white;
 }
 #submit i:hover{
-  color: #fff;
+  color: #4f46e5;
 }
 .info{
     font-size: 0.8rem;
     padding: 0.5rem;
-    color: #b4b4b4;
+    color: var(--text-secondary);
 }
 
 /* dropdown styles */
@@ -122,12 +130,13 @@ input:focus{
     top:4rem;
     right: 4rem;
     width:150px;
-    background-color: #323232;
+    background-color: #ffffff;
+    border: 1px solid var(--border-subtle);
     padding: 0.3rem 0.5rem;
     border-radius: 6px;
     text-align: left;
     z-index:1000;
-    box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
+    box-shadow: 0px 4px 16px rgba(0,0,0,0.08);
 }
 .dropDownItem{
     font-size: 0.9rem;
@@ -136,7 +145,7 @@ input:focus{
     cursor: pointer;
 }
 .dropDownItem:hover{
-    background-color: rgba(180,180,180,0.1);
+    background-color: var(--bg-hover);
     border-radius: 6px;
 }
 
@@ -202,4 +211,48 @@ input:focus{
   .navbar {
     padding-left: 3rem;
   }
+}
+
+
+
+.searchInputDiv {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.searchIcon {
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    color: var(--text-secondary);
+    transition: var(--transition);
+    transition: 1ms ease-in;
+}
+
+
+
+#searchInput {
+    background-color: var(--bg-input);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    padding: 7px 14px;
+    color: var(--text-primary);
+    font-size: 0.85rem;
+    outline: none;
+    width: 180px;
+    transition: var(--transition);
+    border-radius: 15px;
+}
+
+#searchInput:focus {
+    border-color: var(--border-strong);
+}
+
+#plus, #mike, #submit {
+    color: #fff;
+}
+
+#plus i, #mike i, #submit i {
+    color: #fff;
 }

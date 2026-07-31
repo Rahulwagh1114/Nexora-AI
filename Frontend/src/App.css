@@ -1,8 +1,22 @@
-*{
 
+:root{
+  --bg-primary: #ffffff;
+  --bg-sidebar: #0f1420;
+  --bg-input: #f8f9fb;
+  --bg-hover: #f3f4f6;
+  --text-primary: #1a1a2e;
+  --text-secondary: #6b7280;
+  --border-subtle: #e5e7eb;
+  --border-strong: #6366f1;
+  --accent: #6366f1;
+  --radius-sm: 8px;
+  --transition: 0.2s ease;
+}
+
+*{
   box-sizing: border-box;
-color: #ececec;
-font-family: Roboto,'Open Sans','Helvetica Neue',sans-serif;
+  color: #1a1a2e;
+   font-family: Manrope, sans-serif;
 }
 
 body{
@@ -11,13 +25,13 @@ body{
 }
 
 .app{
-background-color: #212121;
-display: flex;
+  background-color: #ffffff;
+  display: flex;
 }
 
 html, body {
   height: 100%;
-  background-color: #212121;
+  background-color: #ffffff;
 }
 
 #root {

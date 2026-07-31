@@ -1,6 +1,6 @@
 .sidebar{
-    background-color: #171717;
-    color:#b4b4b4;
+    background-color: var(--bg-sidebar);
+    color:white !important;
     height: 65%;
     width:320px;
     display: flex;
@@ -11,34 +11,37 @@
 
 .mainSidebar{
     display: flex;
-    flex-direction: column;   /* ye line add ki — ab title upar, sidebar niche stack hoga */
+    flex-direction: column;
     height: 100vh;
 }
 
 .history{
     margin: 10px 10px 10px 2px;
     width: 91%;
-    flex: 1;              /* height:100% ki jagah — remaining space le lega */
-    min-height: 0;        /* zaroori hai flexbox scroll ke sahi kaam karne ke liye */
-    overflow-y: auto;     /* scroll enable */
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
     margin-left: -28px;
+    color: white !important;
+     transition: 180ms ease;
 }
 .history li{
     list-style-type: none;
     cursor:pointer;
     padding: 2px 5px;
     margin-bottom:0.3rem ;
-    font-size: 14px;
+    font-size: 16px;
     border: solid 10px transparent;
     position: relative;
-   
-   
+    color: white;
+    opacity: 0.9;
+     transition: 180ms ease;
 }
 .history li:hover{
-    background-color: rgba(180, 180, 180, 0.05);
+    background-color: rgba(255, 255, 255, 0.09);
     border-radius: 10px;
+    opacity: 1;
 }
-
 
 .fa-trash{
     opacity: 0;
@@ -54,11 +57,10 @@
 }
 
 .highlighted{
-    background-color: rgba(180,180,180,0.05) ;
+    background-color: rgba(44, 45, 98, 0.18);
     border-radius: 10px ;
 }
 
-/* Scrollbar — default invisible, hover pe dikhega */
 .history::-webkit-scrollbar {
     width: 3px;
 }
@@ -70,19 +72,18 @@
     border-radius: 10px;
 }
 .history:hover::-webkit-scrollbar-thumb {
-    background-color: #4a4a4a;
+    background-color: #3f4657;
 }
 .history:hover::-webkit-scrollbar-thumb:hover {
-    background-color: #5e5e5e;
+    background-color: #565f75;
 }
 
-/* Firefox */
 .history {
     scrollbar-width: thin;
     scrollbar-color: transparent transparent;
 }
 .history:hover {
-    scrollbar-color: #4a4a4a transparent;
+    scrollbar-color: #3f4657 transparent;
 }
 
 @media (max-width: 1024px) {
@@ -118,7 +119,7 @@
     left: 14px;
     height: 34px;
     width: 34px;
-    background-color: #2a2a2a;
+    background-color: var(--accent);
     color: #fff;
     border-radius: 8px;
     cursor: pointer;
