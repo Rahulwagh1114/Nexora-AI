@@ -5,9 +5,9 @@ import { useContext, useState, useEffect } from 'react';
 import { ScaleLoader } from 'react-spinners';
 
 function ChatWindow() {
-    const { prompt, setPrompt, reply, setReply, currThreadId, prevChats, setPrevChats,setNewChat,searchQuery,setSearchQuery } = useContext(MyContext);
+    const { prompt, setPrompt, reply, setReply, currThreadId, prevChats, setPrevChats, newChat, setNewChat, searchQuery, setSearchQuery } = useContext(MyContext);
     const [loading, setLoading] = useState(false);
-    const [isOpen,setIsOpen]=useState(false)
+    const [isOpen, setIsOpen] = useState(false)
     const [showSearch, setShowSearch] = useState(false);
 
 
@@ -40,7 +40,7 @@ function ChatWindow() {
 
     useEffect(() => {
         if (prompt, reply) {
-           setPrevChats(prevChats => (
+            setPrevChats(prevChats => (
                 [...prevChats, {
                     role: "user",
                     content: prompt
@@ -54,7 +54,7 @@ function ChatWindow() {
         setPrompt("");
     }, [reply]);
 
-    const handleProfileClick=()=>{
+    const handleProfileClick = () => {
         setIsOpen(!isOpen);
     }
 
@@ -66,39 +66,42 @@ function ChatWindow() {
                 <span>Nexora-AI <i className="fa-solid fa-angle-down"></i></span>
 
                 <div className='searchInputDiv'>
-                 {showSearch &&( <input id="searchInput" placeholder='Search chat' value={searchQuery} onChange={(e)=>setSearchQuery(e.target.value)}></input>)}
-                <i 
-            className="fa-solid fa-magnifying-glass searchIcon" 
-            onClick={() => setShowSearch(!showSearch)}
-        ></i></div>
-                 
+                    {showSearch && (<input id="searchInput" placeholder='Search chat' value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)}></input>)}
+                    <i
+                        className="fa-solid fa-magnifying-glass searchIcon"
+                        onClick={() => setShowSearch(!showSearch)}
+                    ></i></div>
+
                 <div className="userIconDiv" onClick={handleProfileClick}>
                     <span className='userIcon'><i className="fa-solid fa-user"></i></span>
                 </div>
             </div>
 
-             {
+            {
                 isOpen &&
                 <div className='dropDown'>
                     <div className='dropDownItem'><i className="fa-solid fa-gear"></i>Setting</div>
                     <div className='dropDownItem'><i className="fa-solid fa-cloud-arrow-up"></i>Upgrade Plan</div>
                     <div className='dropDownItem'><i className="fa-solid fa-right-from-bracket"></i>LogOut</div>
                 </div>
-             }
+            }
 
-            <Chat />
-            <ScaleLoader color="#000" loading={loading} />
+            {/* NAYA — poora nichla content ab is wrapper mein hai, jo center/bottom toggle karega */}
+            <div className={`chatBody ${newChat ? "centerMode" : ""}`}>
+                <Chat />
+                <ScaleLoader color="#fff" loading={loading} />
 
-            <div className='chatInput'>
-                <div className="inputBox">
-                    <input id="promptInput" type="text" placeholder="Ask anything" value={prompt} onChange={(e) => setPrompt(e.target.value)} onKeyDown={(e) => e.key === "Enter" ? getReply() : ""} ></input>
-                     <div id='plus'><i className="fa-solid fa-plus"></i></div>
-                    <div id="submit" onClick={getReply}><i className="fa-solid fa-paper-plane"></i></div>
-                    <div id="mike"><i className="fa-solid fa-microphone"></i></div>
+                <div className='chatInput'>
+                    <div className="inputBox">
+                        <input id="promptInput" type="text" placeholder="Ask anything" value={prompt} onChange={(e) => setPrompt(e.target.value)} onKeyDown={(e) => e.key === "Enter" ? getReply() : ""} ></input>
+                        <div id='plus'><i className="fa-solid fa-plus"></i></div>
+                        <div id="submit" onClick={getReply}><i className="fa-solid fa-paper-plane"></i></div>
+                        <div id="mike"><i className="fa-solid fa-microphone"></i></div>
+                    </div>
+                    <p className='info'>
+                        Nexora-AI can make mistakes. Checks important info. See cookie Preferences.
+                    </p>
                 </div>
-                <p className='info'>
-                    Nexora-AI can make mistakes. Checks important info. See cookie Preferences.
-                </p>
             </div>
         </div>
 

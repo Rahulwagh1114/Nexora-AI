@@ -11,11 +11,138 @@
 .openAiDiv{
     text-align: left;
     font-size: 0.9rem;
+  color: var(--text-primary);
+}
+
+
+/* ===== Assistant message ke andar Markdown elements ki styling ===== */
+
+.openAiDiv p{
+    margin: 0 0 0.9em 0;
+    line-height: 1.7;
+}
+.openAiDiv p:last-child{
+    margin-bottom: 0;
+}
+
+/* Bold text — highlight jaisa dikhe */
+.openAiDiv strong{
+    color: var(--accent);
+    font-weight: 700;
+}
+
+/* Italic */
+.openAiDiv em{
+    font-style: italic;
     color: var(--text-primary);
 }
+
+/* Headings — AI agar ## Heading use kare to alag stand out kare */
+.openAiDiv h1,
+.openAiDiv h2,
+.openAiDiv h3{
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 1.1em 0 0.5em 0;
+    line-height: 1.3;
+}
+.openAiDiv h1{ font-size: 1.35rem; }
+.openAiDiv h2{ font-size: 1.18rem; }
+.openAiDiv h3{ font-size: 1.05rem; }
+.openAiDiv h1:first-child,
+.openAiDiv h2:first-child,
+.openAiDiv h3:first-child{
+    margin-top: 0;
+}
+
+/* Bullet aur numbered lists */
+.openAiDiv ul,
+.openAiDiv ol{
+    margin: 0.4em 0 0.9em 0;
+    padding-left: 1.4em;
+}
+.openAiDiv li{
+    margin-bottom: 0.45em;
+    line-height: 1.65;
+}
+.openAiDiv li::marker{
+    color: var(--accent);
+}
+.openAiDiv li > p{
+    margin-bottom: 0.3em;
+}
+
+/* Nested lists ke liye thoda extra spacing */
+.openAiDiv ul ul,
+.openAiDiv ol ol,
+.openAiDiv ul ol,
+.openAiDiv ol ul{
+    margin: 0.3em 0 0.3em 0;
+}
+
+/* Blockquote — agar AI kabhi quote de */
+.openAiDiv blockquote{
+    border-left: 3px solid var(--accent);
+    background-color: var(--bg-hover);
+    padding: 0.6em 1em;
+    margin: 0.8em 0;
+    border-radius: 6px;
+    color: var(--text-secondary);
+}
+
+/* Inline code (single backtick wale, jaise `variable`) */
+.openAiDiv :not(pre) > code{
+    background-color: var(--bg-hover);
+    color: var(--accent-hover, #4f46e5);
+    padding: 2px 6px;
+    border-radius: 5px;
+    font-size: 0.85em;
+    font-family: "JetBrains Mono", monospace;
+}
+
+/* Links */
+.openAiDiv a{
+    color: var(--accent);
+    text-decoration: underline;
+    text-decoration-color: rgba(99, 102, 241, 0.3);
+    text-underline-offset: 2px;
+}
+.openAiDiv a:hover{
+    text-decoration-color: var(--accent);
+}
+
+/* Horizontal rule — agar AI section-break de */
+.openAiDiv hr{
+    border: none;
+    border-top: 1px solid var(--border-subtle);
+    margin: 1.2em 0;
+}
+
+/* Tables — agar AI comparison table bheje */
+.openAiDiv table{
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0.9em 0;
+    font-size: 0.88rem;
+}
+.openAiDiv th,
+.openAiDiv td{
+    border: 1px solid var(--border-subtle);
+    padding: 8px 12px;
+    text-align: left;
+}
+.openAiDiv th{
+    background-color: var(--bg-hover);
+    font-weight: 600;
+}
+
+
+
 .userMessage{
-    background-color: var(--accent);
-    color: #ffffff;
+    /* background-color: var(--accent); */
+        background-color: var(--bg-input);
+    color: var(--text-primary);
+    border: 1px solid var(--border-subtle);
     padding: 10px 20px;
     border-radius: 14px;
     margin-left: 15rem;
@@ -25,7 +152,43 @@
 .hljs{ 
     border-radius: 14px !important;
     border: 1px solid var(--border-subtle);
-    color: unset !important;
+}
+
+/* Sabhi descendants (chahe koi bhi class ho) ka color force karo */
+.hljs, .hljs *{
+    color: #c9d1d9 !important;
+    opacity: 1 !important;
+}
+
+/* Sirf comments ko wapas thoda dim rakho (intentional, readability ke liye) */
+.hljs-comment{
+    color: #8b949e !important;
+}
+
+/* Ab syntax colors wapas explicitly set karo — inhi 5-6 rules se sab cover ho jaata hai */
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-literal{
+    color: #ff7b72 !important;
+}
+.hljs-string,
+.hljs-attr,
+.hljs-symbol{
+    color: #a5d6ff !important;
+}
+.hljs-title,
+.hljs-title.function_,
+.hljs-title.class_,
+.hljs-section{
+    color: #d2a8ff !important;
+}
+.hljs-tag,
+.hljs-name{
+    color: #7ee787 !important;
+}
+.hljs-number,
+.hljs-built_in{
+    color: #79c0ff !important;
 }
 pre{
     white-space:pre-wrap;

@@ -1,56 +1,64 @@
 .titleSection{
-    background-color: var(--bg-sidebar);
-    color:white;
+     background-color: #0f1115 !important;
+    color: var(--text-primary);
     height: 35%;
-    width:320px;
+    width: 320px;
     display: flex;
     flex-direction: column;
     cursor: pointer;
- }
- .title{
+}
+
+.title{
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    font-size: 1.2rem;
+    font-size: 1.15rem;
     margin-left: 0.7rem;
-    color: #ffffff;
-    font-weight: 550;
- }
- .title i{
-   width: 44px;
-  height: 44px;
-  border-radius: 14px;
-  display: grid;
-  place-items: center;
-  background: linear-gradient(135deg, #7180ff, #8b5cf6);
-  margin: 10px;
- }
- button{
+    color: var(--text-primary);
+    font-weight: 600;
+    font-family: 'Fraunces', serif;
+}
+
+.title i{
+   width: 36px;
+   height: 36px;
+   border-radius: 9px;
+   display: grid;
+   place-items: center;
+   background: linear-gradient(135deg, var(--gold), var(--violet));
+   margin: 10px 10px 0px 10px;
+   color: #14110a !important;
+}
+
+button{
     display: flex;
     align-items: center;
-    margin-top: 10px ;
+    margin-top: 10px;
     border: none;
     background-color: transparent;
     cursor: pointer;
     width: 92%;
 }
+
+/* New Chat button — filled gold, jaisa reference image mein hai */
 .titleSection button span{
     display: flex;
     align-items: center;
-    gap: 8px;
-    width: 88%;
-    height: 25px !important;
-    padding: 20px 5px !important;
+    width: 88%; 
+    padding: 10px 5px !important;
+    padding-left: 10px !important;
     border-radius: 10px;
-    font-size: 1rem;
-    color: white;
-    transition: background-color 0.2s ease;
-   font-weight: 550;
-     transition: 180ms ease;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    font-weight: 600;
+    border: none;
+    transition: filter 0.2s ease, transform 0.2s ease;
 }
 
 .titleSection button span:hover{
-   background-color: rgba(255, 255, 255, 0.09);
+     color: var(--text-primary);
+    background-color: var(--bg-hover);
+    border-radius: 10px;
 }
 
 .additionalOption{
@@ -59,24 +67,25 @@
     justify-content: center;
     align-items: start;
 }
+
 .additionalOption span{
-    font-size: 1rem !important;
+    font-size: 0.95rem !important;
     margin-left: 10px;
     padding: 1px 4px;
-    color: white;
-     transition: 180ms ease;
-   font-weight: 550;
-   opacity: 0.8;
+    color: var(--text-secondary);
+    transition: 180ms ease;
+    font-weight: 500;
 }
+
 .additionalOption .span2{
     width: 80%;
     border: solid 10px transparent;
-     transition: 180ms ease;
-    
+    transition: 180ms ease;
 }
+
 .additionalOption span:hover{
-    opacity: 1;
-   background-color: rgba(255, 255, 255, 0.09);
+    color: var(--text-primary);
+    background-color: var(--bg-hover);
     border-radius: 10px;
 }
 
@@ -85,71 +94,23 @@
     justify-content: space-between;
     margin-left: 23px;
     margin-right: 40px;
-    font-size: 12px;
-    opacity: 0.8;
-    margin-top:0.2rem ;
-    color: white !important;
-}
-#recentsDiv i{
-  color: white;
-}
-#recentsDiv span{
-  color:white;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    opacity: 0.7;
+    margin-top: 0.8rem;
+    color: var(--text-faint) !important;
 }
 
-@media (max-width: 1024px) {
-  .titleSection {
-    width: 240px;
-   height: 35%;
-  }
-  .additionalOption span:hover{
-    opacity: 1;
-   background-color: rgba(255, 255, 255, 0.09);
-    border-radius: 10px;
-  }
-}
+#recentsDiv i{ color: var(--text-faint); cursor: pointer; }
+#recentsDiv span{ color: var(--text-faint); }
 
+@media (max-width: 1024px) { .titleSection { width: 240px; } }
 @media (max-width: 768px) {
-  .titleSection {
-    width: 200px;
-    height: 35%;
-  }
-  .title {
-    font-size: 1rem;
-    margin-left: 2.4rem;
-    margin-top: 5px;
-  }
-  .title i{
-    width: 34px;
-  height: 34px;
-  border-radius: 10px;
-  }
-  .logo {
-    height: 36px;
-    width: 36px;
-  }
-  .additionalOption span {
-    font-size: 0.9rem !important;
-  }
-  .recentsDiv {
-    margin-right: 20px;
+  .titleSection { width: 240px; }
+  .title { font-size: 1rem;
   }
 }
+@media (max-width: 480px) { .titleSection { width: 200px; } }
 
-
-@media (max-width: 768px) {
-  .titleSection {
-    width: 240px;
-    
-  }
-}
-
-@media (max-width: 480px) {
-  .titleSection {
-    width: 200px;
-  }
-}
-
-span i{
-  color: white;
-}
+span i{ color: inherit; }

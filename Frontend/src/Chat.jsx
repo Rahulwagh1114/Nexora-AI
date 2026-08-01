@@ -3,7 +3,8 @@ import { MyContext } from './MyContext';
 import { useContext, useEffect, useState } from 'react';
 import ReactMarkdown from "react-markdown";//react-markdown pakg for fromating
 import rehypeHighlight from "rehype-highlight"; //rehype-highlight pakg for highlighting
-import "highlight.js/styles/github.css";
+import remarkBreaks from "remark-breaks";  
+import "highlight.js/styles/github-dark.css";
 
 function Chat() {
     const { newChat, prevChats, reply } = useContext(MyContext);
@@ -28,14 +29,14 @@ function Chat() {
 
     return (
         <>
-            {newChat && <h1>Start a New Chat!</h1>}
+            {newChat && <p style={{fontSize:"25px"}}>Ready when you are.</p>}
             <div className='chats'>
                 {
                     prevChats?.slice(0, -1).map((chat, idx) =>
                         <div className={chat.role === "user" ? "userDiv" : "openAiDiv"} key={idx}>
                             {
                                 chat.role === "user" ? <p className='userMessage'>{chat.content}</p> :
-                                    <ReactMarkdown rehypePlugins={[rehypeHighlight]}>{chat.content}</ReactMarkdown>
+                                    <ReactMarkdown remarkPlugins={[remarkBreaks]} rehypePlugins={[rehypeHighlight]}>{chat.content}</ReactMarkdown>
                             }
 
                         </div>
@@ -47,10 +48,10 @@ function Chat() {
                         <>
                             {
                                 latestReply === null ? (<div className='openAiDiv' key={"non-typing"}>
-                                    <ReactMarkdown rehypePlugins={[rehypeHighlight]}>{prevChats[prevChats.length - 1].content}</ReactMarkdown>
+                                    <ReactMarkdown remarkPlugins={[remarkBreaks]} rehypePlugins={[rehypeHighlight]}>{prevChats[prevChats.length - 1].content}</ReactMarkdown>
                                 </div>) :
                                     <div className='openAiDiv' key={"typing"}>
-                                        <ReactMarkdown rehypePlugins={[rehypeHighlight]}>{latestReply}</ReactMarkdown>
+                                        <ReactMarkdown remarkPlugins={[remarkBreaks]} rehypePlugins={[rehypeHighlight]}>{latestReply}</ReactMarkdown>
                                     </div>
                             }
 

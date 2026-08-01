@@ -1,5 +1,5 @@
 .chatWindow{
-    background-color: var(--bg-primary);
+    background-color: var(--bg-sidebar);
     height: 100vh;
     width:100%;
     display: flex;
@@ -8,7 +8,7 @@
     align-items: center;
     text-align: center;
     color: var(--text-primary);
-     background-color: #f4f4ff;
+    
     
 }
 .navbar{
@@ -18,10 +18,12 @@
     align-items: center;
     height: 3.5rem;
     border-bottom: 1px solid var(--border-subtle);
-    background-color: white;
+    background-color: #0f1115 !important;
+    color: var(--text-secondary) !important;
 }
 .navbar span{
     margin: 1rem 2rem;
+    font-family: 'Fraunces', serif;
     font-weight: 600;
 }
 .userIconDiv{
@@ -29,7 +31,7 @@
 }
 
 .userIcon{
-    background-color: var(--accent);
+     background: linear-gradient(135deg, var(--gold), var(--violet));
     height: 25px;
     width: 25px;
     border-radius: 50%;
@@ -56,19 +58,19 @@
 }
 #promptInput{
     width: 100%;
+     background-color: var(--bg-input);
     border: 1px solid var(--border-subtle);
-    background-color: var(--bg-input);
     color: var(--text-primary);
     padding: 20px 66px ;
     font-size: 0.8rem;
-    border-radius: 15px;
+    border-radius: 25px;
     box-shadow: rgba(0,0,0,0.03) 0 8px 20px;
-    background-color: #1a1a2e;
-    color: #fff;
+    /* background-color: #1a1a2e;
+    color: #fff; */
 }
 input:focus{
-    outline: none;
-    border-color: var(--accent);
+     outline: none;
+    border-color: var(--gold);
 }
 #plus{
     position: absolute;
@@ -83,6 +85,7 @@ input:focus{
   
 }
 
+
 #mike{
     position: absolute;
     display: flex;
@@ -96,11 +99,12 @@ input:focus{
 }
  
 #mike i:hover{
-     color: #4f46e5;
-    
+      color: rgb(151, 148, 148);
 }
 #plus i:hover{
-      color: #4f46e5;
+     
+  color: rgb(151, 148, 148);
+   
 }
 #submit{
     height: 35px;
@@ -112,10 +116,11 @@ input:focus{
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    color: white;
+    color: #14110a;
+    border-radius: 50%;
 }
 #submit i:hover{
-  color: #4f46e5;
+  color: rgb(181, 127, 25);
 }
 .info{
     font-size: 0.8rem;
@@ -130,8 +135,9 @@ input:focus{
     top:4rem;
     right: 4rem;
     width:150px;
-    background-color: #ffffff;
+       background-color: var(--bg-input);
     border: 1px solid var(--border-subtle);
+    color: var(--text-primary);
     padding: 0.3rem 0.5rem;
     border-radius: 6px;
     text-align: left;
@@ -255,4 +261,27 @@ input:focus{
 
 #plus i, #mike i, #submit i {
     color: #fff;
+}
+
+
+.chatBody {
+    flex: 1;
+    width: 100%;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.25s ease;
+}
+
+/* Jab tak naya chat empty hai — sab kuch center mein */
+.chatBody.centerMode {
+    justify-content: center;
+}
+
+.chatBody.centerMode .chats {
+    padding: 0;
+    min-height: 0;
+    flex: 0;
 }
