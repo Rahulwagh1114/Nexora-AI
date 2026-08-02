@@ -31,12 +31,17 @@
     cursor: pointer;
     padding: 9px 12px;
     margin-bottom: 2px;
+    margin-left: 35px !important;
     font-size: 13.5px;
     border-radius: var(--radius-sm);
     position: relative;
     color: var(--text-secondary);
     opacity: 1;
     transition: 180ms ease;
+
+     white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .history li:hover{
     background-color: var(--bg-hover);

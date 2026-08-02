@@ -34,10 +34,11 @@ button{
     display: flex;
     align-items: center;
     margin-top: 10px;
-    border: none;
+    border: none !important;
     background-color: transparent;
     cursor: pointer;
     width: 92%;
+    opacity: 1 !important;
 }
 
 /* New Chat button — filled gold, jaisa reference image mein hai */

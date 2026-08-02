@@ -4,6 +4,8 @@ import ChatWindow from './ChatWindow';
 import { MyContext } from './MyContext';
 import { useState } from 'react';
 import { v4 as uuidv4 } from "uuid";
+import Studio from './Studio';
+import Insights from './Insights';
 
 
 function App() {
@@ -14,6 +16,7 @@ function App() {
   const [newChat,setNewChat]=useState(true); 
   const [allThreads,setAllThreads]=useState([]);
   const [searchQuery, setSearchQuery]=useState("")
+  const [currentPage,setCurrentPage]=useState("studio")
 
   const providerValues={
     prompt,setPrompt,
@@ -22,14 +25,18 @@ function App() {
     prevChats,setPrevChats,
     newChat,setNewChat,
     allThreads,setAllThreads,
-    searchQuery,setSearchQuery
+    searchQuery,setSearchQuery,
+    currentPage,setCurrentPage
   };
 
   return (
     <div className='app'>
       <MyContext.Provider value={providerValues}>
         <Sidebar/>
-        <ChatWindow/>
+        {currentPage==="chat"? <ChatWindow/>:
+        currentPage==="insights"? <Insights/>:
+        <Studio/>
+        }
         </MyContext.Provider>
     </div>
   )
