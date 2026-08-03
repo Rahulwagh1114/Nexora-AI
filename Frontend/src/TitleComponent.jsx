@@ -8,7 +8,7 @@ function TitleComponent({createNewChat}){
             <span className="title"> <i className="fa-brands fa-nfc-symbol"></i> Nexora-AI</span>
            
            <div className="additionalOption">
-         <button onClick={()=>{setCurrentPage("chat"); createNewChat}}>
+         <button onClick={()=>{setCurrentPage("chat"); createNewChat()}}>
                 <span> <i className="fa-solid fa-pen-to-square"></i> New Chat</span>
               </button>
                <span className="span2" onClick={()=>setCurrentPage("studio")}><i className="fa-solid fa-wand-magic-sparkles"></i> Studio</span>

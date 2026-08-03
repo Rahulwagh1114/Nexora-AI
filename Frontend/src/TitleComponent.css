@@ -11,12 +11,13 @@
 .title{
     display: flex;
     justify-content: flex-start;
-    align-items: center;
+    align-items: center !important;
     font-size: 1.15rem;
     margin-left: 0.7rem;
     color: var(--text-primary);
     font-weight: 600;
     font-family: 'Fraunces', serif;
+    margin: 10px 10px 0px 15px !important;
 }
 
 .title i{
@@ -26,8 +27,8 @@
    display: grid;
    place-items: center;
    background: linear-gradient(135deg, var(--gold), var(--violet));
-   margin: 10px 10px 0px 10px;
    color: #14110a !important;
+   margin-right: 5px;
 }
 
 button{

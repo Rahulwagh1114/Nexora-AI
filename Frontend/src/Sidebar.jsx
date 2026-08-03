@@ -7,7 +7,7 @@ import TitleComponent from "./TitleComponent";
 
 
 function Sidebar() {
-  const { allThreads, setAllThreads, currThreadId, setNewChat, setPrompt, setReply, setCurrThreadId, setPrevChats, searchQuery } = useContext(MyContext);
+  const { allThreads, setAllThreads, currThreadId, setNewChat, setPrompt, setReply, setCurrThreadId, setPrevChats, searchQuery,setCurrentPage } = useContext(MyContext);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const sidebarRef = useRef(null);
 
@@ -47,6 +47,7 @@ function Sidebar() {
 
   const changeThread = async (newThreadId) => {
     setCurrThreadId(newThreadId)
+    setCurrentPage("chat")
 
     try {
       const response = await fetch(`${import.meta.env.VITE_API_URL}/api/thread/${newThreadId}`)
