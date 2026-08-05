@@ -5,8 +5,11 @@ import "dotenv/config";
 import express from "express";
 import cors from "cors";
 import { getAIResponse } from "./utils/aiClients.js";
+import cookieParser from "cookie-parser";
 
-import chartRotes from "./routes/chat.js";
+import chatRoutes from "./routes/chat.js";
+import authRoutes from "./routes/auth.js"
+import authMiddleware from "./middleware/auth.js";
 
 import mongoose from "mongoose";
 const app = express();
@@ -15,7 +18,12 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json({ limit: "20mb" }));
 
-app.use("/api",chartRotes);
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
+
+app.use("/api/auth", authRoutes);           // Public — login/register
+app.use("/api", authMiddleware, chatRoutes); // Protected — sirf logged-in user
 
 const connectDB = async () => {
     try {

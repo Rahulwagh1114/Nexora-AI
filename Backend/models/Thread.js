@@ -22,7 +22,8 @@ const ThreadSchema=new mongoose.Schema({
         type:String,
         required:true,
         unique:true
-    },title:{
+    },userId: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },   // NAYA
+    title:{
         type:String,
         default:"New chat"
     },message:[messageSchema],
