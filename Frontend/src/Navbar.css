@@ -1,0 +1,128 @@
+.navbar{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 3.5rem;
+    border-bottom: 1px solid var(--border-subtle);
+    background-color: #0f1115 !important;
+    color: var(--text-secondary) !important;
+}
+.navbar span{
+    margin: 1rem 2rem;
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+}
+.userIconDiv{
+    margin: 1rem 2rem;
+}
+
+.userIcon{
+     background: linear-gradient(135deg, var(--gold), var(--violet));
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: #fff;
+}
+.dropDown{
+    position: absolute;
+    top:4rem;
+    right: 4rem;
+    width:150px;
+       background-color: var(--bg-input);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-primary);
+    padding: 0.3rem 0.5rem;
+    border-radius: 6px;
+    text-align: left;
+    z-index:1000;
+    box-shadow: 0px 4px 16px rgba(0,0,0,0.08);
+}
+.dropDownItem{
+    font-size: 0.9rem;
+    margin: 0.3rem 0rem;
+    padding: 0.5rem 0.2rem;
+    cursor: pointer;
+}
+.dropDownItem:hover{
+    background-color: var(--bg-hover);
+    border-radius: 6px;
+}
+
+.searchInputDiv {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.searchIcon {
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    color: var(--text-secondary);
+    transition: var(--transition);
+    transition: 1ms ease-in;
+   position: relative;
+   left:40px;
+   opacity: 0.6;
+   
+}
+
+
+
+#searchInput {
+    background-color: var(--bg-input);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    padding: 7px 14px;
+    padding-left: 35px;
+    color: var(--text-primary);
+    font-size: 0.85rem;
+    outline: none;
+    width: 180px;
+    transition: var(--transition);
+    border-radius: 15px;
+}
+
+#searchInput:focus {
+    border-color: var(--border-strong);
+}
+.navbar .navTitle{
+    margin-top: 15px;
+   line-height: 0.3px;
+   opacity: 0.8;
+}
+.navbar p{
+    font-size: 11px;
+    opacity: 0.8;
+    text-align: center;
+    line-height: 0.1px;
+}
+
+@media (max-width: 768px) {
+  .navbar span {
+    margin: 0.8rem 1rem;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding-left: 3rem;
+  }
+}
+
+@media(max-width:920){
+    .navbar .navTitle{
+    margin-top: 15px;
+    font-size: 12px !important;
+}
+    .navbar p{
+    font-size: 9px !important;
+  
+}
+}

@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { v4 as uuidv4 } from "uuid";
 import Studio from './Studio';
 import Insights from './Insights';
+import Auth from "./Auth";
 
 
 function App() {
@@ -17,6 +18,8 @@ function App() {
   const [allThreads,setAllThreads]=useState([]);
   const [searchQuery, setSearchQuery]=useState("")
   const [currentPage,setCurrentPage]=useState("studio")
+  const [pendingPage,setPendingPage]=useState(null)
+   const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem("accessToken"))
 
   const providerValues={
     prompt,setPrompt,
@@ -26,7 +29,9 @@ function App() {
     newChat,setNewChat,
     allThreads,setAllThreads,
     searchQuery,setSearchQuery,
-    currentPage,setCurrentPage
+    currentPage,setCurrentPage,
+    isAuthenticated,setIsAuthenticated,
+    pendingPage,setPendingPage
   };
 
   return (
@@ -35,6 +40,7 @@ function App() {
         <Sidebar/>
         {currentPage==="chat"? <ChatWindow/>:
         currentPage==="insights"? <Insights/>:
+        currentPage==="auth"?<Auth/>:
         <Studio/>
         }
         </MyContext.Provider>

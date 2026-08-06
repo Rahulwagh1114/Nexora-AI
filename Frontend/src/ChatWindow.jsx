@@ -3,40 +3,47 @@ import Chat from './Chat';
 import { MyContext } from './MyContext';
 import { useContext, useState, useEffect } from 'react';
 import { ScaleLoader } from 'react-spinners';
+import Navbar from './Navbar';
+import { authFetch } from './api';
 
 function ChatWindow() {
-    const { prompt, setPrompt, reply, setReply, currThreadId, prevChats, setPrevChats, newChat, setNewChat, searchQuery, setSearchQuery } = useContext(MyContext);
+    const { prompt, setPrompt, reply, setReply, currThreadId, prevChats, setPrevChats, newChat, setNewChat } = useContext(MyContext);
     const [loading, setLoading] = useState(false);
-    const [isOpen, setIsOpen] = useState(false)
-    const [showSearch, setShowSearch] = useState(false);
-
 
     const getReply = async () => {
         setLoading(true);
         setNewChat(false);
+
+        const accessToken = localStorage.getItem("accessToken");
         const options = {
             method: "POST",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${accessToken}`
             },
+            credentials: "include",
             body: JSON.stringify({
                 message: prompt,
                 threadId: currThreadId
             })
-        }
+        };
 
         try {
-            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/chat`, options);
-            const res = await response.json();
-            console.log(res);
-            setReply(res.reply);
-            console.log(response);
-
-        } catch (err) {
-            console.log(err);
-        }
-        setLoading(false)
+        const response = await authFetch("/api/chat", {
+            method: "POST",
+            body: JSON.stringify({
+                message: prompt,
+                threadId: currThreadId
+            })
+        });
+        if (!response) { setLoading(false); return; }
+        const res = await response.json();
+        setReply(res.reply);
+    } catch (err) {
+        console.log(err);
     }
+    setLoading(false)
+}
 
     useEffect(() => {
         if (prompt, reply) {
@@ -54,39 +61,10 @@ function ChatWindow() {
         setPrompt("");
     }, [reply]);
 
-    const handleProfileClick = () => {
-        setIsOpen(!isOpen);
-    }
-
     return (
-
         <div className='chatWindow'>
+            <Navbar/>
 
-            <div className='navbar'>
-                <span>Nexora-AI <i className="fa-solid fa-angle-down"></i></span>
-
-                <div className='searchInputDiv'>
-                    {showSearch && (<input id="searchInput" placeholder='Search chat' value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)}></input>)}
-                    <i
-                        className="fa-solid fa-magnifying-glass searchIcon"
-                        onClick={() => setShowSearch(!showSearch)}
-                    ></i></div>
-
-                <div className="userIconDiv" onClick={handleProfileClick}>
-                    <span className='userIcon'><i className="fa-solid fa-user"></i></span>
-                </div>
-            </div>
-
-            {
-                isOpen &&
-                <div className='dropDown'>
-                    <div className='dropDownItem'><i className="fa-solid fa-gear"></i>Setting</div>
-                    <div className='dropDownItem'><i className="fa-solid fa-cloud-arrow-up"></i>Upgrade Plan</div>
-                    <div className='dropDownItem'><i className="fa-solid fa-right-from-bracket"></i>LogOut</div>
-                </div>
-            }
-
-            {/* NAYA — poora nichla content ab is wrapper mein hai, jo center/bottom toggle karega */}
             <div className={`chatBody ${newChat ? "centerMode" : ""}`}>
                 <Chat />
                 <ScaleLoader color="#fff" loading={loading} />
@@ -104,7 +82,6 @@ function ChatWindow() {
                 </div>
             </div>
         </div>
-
     )
 }
 export default ChatWindow;

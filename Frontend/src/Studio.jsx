@@ -1,11 +1,14 @@
 import RobotMascot from './RobotMascot';
 import './studio.css';
 import StudioCard from './StudioCard';
+import Navbar from './Navbar';
 function Studio() {
     return (
     
-          <div className='studio'>
-            <div>
+         <div className='studioDiv'>
+           <Navbar/>
+          <div className='studio'><div>
+            
               <RobotMascot/>
             </div>
             <div className='cardBox'>
@@ -21,6 +24,7 @@ function Studio() {
                 <StudioCard icon={"fa-solid fa-file"} title="Smart Chat Threads" desc="Keep your conversations organized and easy to manage." lists={["Create new threads", "Switch between chats", "Delete conversations", "Manage chat history"]} />
            
                 <StudioCard icon={"fa-solid fa-file"} title="Multi-Model AI" desc="Experience powerful AI responses through multiple AI models." lists={["Gemini integration", "Groq integration", "Fast AI inference", "Flexible model support"]} />
+            </div>
             </div>
             </div>
     

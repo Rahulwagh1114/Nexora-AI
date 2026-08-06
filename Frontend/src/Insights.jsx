@@ -66,12 +66,46 @@ function Insights() {
     const [threads, setThreads] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        fetch(`${import.meta.env.VITE_API_URL}/api/thread`)
-            .then(res => res.json())
-            .then(data => { setThreads(Array.isArray(data) ? data : []); setLoading(false); })
-            .catch(() => setLoading(false));
-    }, []);
+   useEffect(() => {
+    const getInsights = async () => {
+        try {
+            const accessToken = localStorage.getItem("accessToken");
+
+            if (!accessToken) {
+                setThreads([]);
+                setLoading(false);
+                return;
+            }
+
+            const response = await fetch(
+                `${import.meta.env.VITE_API_URL}/api/thread`,
+                {
+                    headers: {
+                        Authorization: `Bearer ${accessToken}`,
+                    },
+                    credentials: "include",
+                }
+            );
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                console.log(data.error);
+                setThreads([]);
+            } else {
+                setThreads(Array.isArray(data) ? data : []);
+            }
+
+        } catch (err) {
+            console.log(err);
+            setThreads([]);
+        }
+
+        setLoading(false);
+    };
+
+    getInsights();
+}, []);
 
     if (loading) {
         return <div className="insightsPage"><p className="loadingText">Loading insights…</p></div>;

@@ -1,0 +1,93 @@
+.authPage{
+    height: 100vh;
+    width: 100% ;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--bg-primary, #0f1115);
+    margin-right: 15rem;
+}
+
+.authPage form{
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: 100%;
+    max-width: 360px;
+    padding: 32px;
+    background-color: #16171d;
+    border: 1px solid var(--border-subtle, rgba(255,255,255,0.08));
+    border-radius: 16px;
+}
+
+.authPage h2{
+    font-family: 'Fraunces', serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--text-primary, #f1efe8);
+    margin: 0 0 6px 0;
+    text-align: center;
+   
+}
+
+.authPage input{
+    background-color: var(--bg-input, #1a1c22);
+    border: 1px solid var(--border-subtle, rgba(255,255,255,0.08));
+    border-radius: 10px;
+    padding: 12px 14px;
+    color: var(--text-primary, #f1efe8);
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.authPage input:focus{
+    border-color: var(--accent, #6366f1);
+}
+
+.authPage input::placeholder{
+    color: var(--text-secondary, #6e6c78);
+}
+
+.authPage button{
+  background: linear-gradient(135deg, var(--gold), var(--violet));
+    color: black;
+    border: none;
+    border-radius: 10px;
+    padding: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-left: 12px;
+    margin-top: 6px;
+    transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.authPage button:hover{
+    background: linear-gradient(135deg, var(--gold), var(--violet));
+    transform: translateY(-1px);
+}
+
+.authPage p{
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-secondary, #8b8b9e);
+    margin: 4px 0 0 0;
+}
+
+.authPage p span{
+    color: var(--accent, #6366f1);
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.authPage p span:hover{
+    text-decoration: underline;
+}
+@media (max-width: 768px) {
+  .authPage {
+    margin-right: 0px;
+    text-align: center;
+  }
+}

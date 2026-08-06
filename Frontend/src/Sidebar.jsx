@@ -4,17 +4,29 @@ import { MyContext } from "./MyContext";
 import { useContext, useEffect, useState, useRef } from "react";
 import { v4 as uuidv4 } from "uuid";
 import TitleComponent from "./TitleComponent";
+import { authFetch } from "./api";
 
 
 function Sidebar() {
-  const { allThreads, setAllThreads, currThreadId, setNewChat, setPrompt, setReply, setCurrThreadId, setPrevChats, searchQuery,setCurrentPage } = useContext(MyContext);
+  const { allThreads, setAllThreads, currThreadId, setNewChat, setPrompt, setReply, setCurrThreadId, setPrevChats, searchQuery,setCurrentPage,isAuthenticated,setPendingPage} = useContext(MyContext);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const sidebarRef = useRef(null);
 
   const getAllThreads = async () => {
+    if(!isAuthenticated){
+      setAllThreads([]);
+      return;
+    }
+    const accessToken=localStorage.getItem("accessToken");
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/thread`);
+      const response = await authFetch("/api/thread");
+       
       const res = await response.json();
+      if(!response.ok){
+        console.log(res)
+        return;
+      }
+
       const filteredData = res.map(thread => ({ threadId: thread.threadId, title: thread.title }))
       setAllThreads(filteredData)
     } catch (err) {
@@ -24,7 +36,7 @@ function Sidebar() {
 
   useEffect(() => {
     getAllThreads();
-  }, [currThreadId]);
+  }, [currThreadId,isAuthenticated]);
 
   // NAYA — outside click detect karke sidebar band karega
   useEffect(() => {
@@ -46,12 +58,25 @@ function Sidebar() {
   }
 
   const changeThread = async (newThreadId) => {
+    if(!isAuthenticated){
+      setPendingPage("chat")
+      setCurrentPage("auth")
+      return;
+    }
+    const accessToken=localStorage.getItem("accessToken")
     setCurrThreadId(newThreadId)
     setCurrentPage("chat")
 
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/thread/${newThreadId}`)
+      const response = await authFetch(`/api/thread/${newThreadId}`);
+  
+  if(!response){
+         console.log(res)
+        return;
+      }
+
       const res = await response.json();
+
       setPrevChats(res);
       setNewChat(false);
       setReply(null);
@@ -61,9 +86,16 @@ function Sidebar() {
   }
 
   const deleteThread = async (threadId) => {
+    const accessToken=localStorage.getItem("accessToken")
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/thread/${threadId}`, { method: "DELETE" });
+       const response = await authFetch(`/api/thread/${threadId}`, { method: "DELETE" });
+
+      if(!response.ok){
+        console.log(res)
+        return;
+      }
       const res = await response.json();
+
       setAllThreads(prev => prev.filter(thread => thread.threadId !== threadId));
 
       if (threadId === currThreadId) {
