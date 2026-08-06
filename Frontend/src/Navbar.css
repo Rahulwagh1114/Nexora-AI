@@ -7,20 +7,51 @@
     border-bottom: 1px solid var(--border-subtle);
     background-color: #0f1115 !important;
     color: var(--text-secondary) !important;
+    gap: 12px;
+    padding: 0 1rem;
+    box-sizing: border-box;
 }
-.navbar span{
-    margin: 1rem 2rem;
+
+.navbar > div:first-child{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 0;
+    overflow: hidden;
+}
+
+.navbar .navTitle{
+    display: flex;
+    align-items: center;
+    gap: 6px;
     font-family: 'Fraunces', serif;
     font-weight: 600;
+    font-size: 1rem;
+    opacity: 0.9;
+    line-height: 1.3;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
+
+.navbar p{
+    font-size: 11px;
+    opacity: 0.6;
+    line-height: 1.3;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .userIconDiv{
-    margin: 1rem 2rem;
+    flex-shrink: 0;
 }
 
 .userIcon{
-     background: linear-gradient(135deg, var(--gold), var(--violet));
-    height: 25px;
-    width: 25px;
+    background: linear-gradient(135deg, var(--gold), var(--violet));
+    height: 28px;
+    width: 28px;
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -28,26 +59,32 @@
     cursor: pointer;
     color: #fff;
 }
+
 .dropDown{
     position: absolute;
-    top:4rem;
-    right: 4rem;
-    width:150px;
-       background-color: var(--bg-input);
+    top: 4rem;
+    right: 1.5rem;
+    width: 150px;
+    background-color: var(--bg-input);
     border: 1px solid var(--border-subtle);
     color: var(--text-primary);
     padding: 0.3rem 0.5rem;
     border-radius: 6px;
     text-align: left;
-    z-index:1000;
+    z-index: 1000;
     box-shadow: 0px 4px 16px rgba(0,0,0,0.08);
 }
+
 .dropDownItem{
     font-size: 0.9rem;
     margin: 0.3rem 0rem;
     padding: 0.5rem 0.2rem;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
+
 .dropDownItem:hover{
     background-color: var(--bg-hover);
     border-radius: 6px;
@@ -56,73 +93,79 @@
 .searchInputDiv {
     display: flex;
     align-items: center;
-    gap: 14px;
+    position: relative;
+    flex-shrink: 0;
 }
 
 .searchIcon {
-    cursor: pointer;
-    padding: 8px;
-    border-radius: 50%;
+    position: absolute;
+    left: 12px;
+    font-size: 13px;
     color: var(--text-secondary);
-    transition: var(--transition);
-    transition: 1ms ease-in;
-   position: relative;
-   left:40px;
-   opacity: 0.6;
-   
+    opacity: 0.6;
+    pointer-events: none;
 }
-
-
 
 #searchInput {
     background-color: var(--bg-input);
     border: 1px solid var(--border-subtle);
-    border-radius: var(--radius-sm);
-    padding: 7px 14px;
-    padding-left: 35px;
+    border-radius: 15px;
+    padding: 7px 14px 7px 32px;
     color: var(--text-primary);
     font-size: 0.85rem;
     outline: none;
     width: 180px;
     transition: var(--transition);
-    border-radius: 15px;
 }
 
 #searchInput:focus {
     border-color: var(--border-strong);
 }
-.navbar .navTitle{
-    margin-top: 15px;
-   line-height: 0.3px;
-   opacity: 0.8;
-}
-.navbar p{
-    font-size: 11px;
-    opacity: 0.8;
-    text-align: center;
-    line-height: 0.1px;
-}
 
-@media (max-width: 768px) {
-  .navbar span {
-    margin: 0.8rem 1rem;
-    font-size: 0.95rem;
-  }
-}
+/* ---------- Responsive ---------- */
 
-@media (max-width: 768px) {
-  .navbar {
-    padding-left: 3rem;
-  }
-}
-
-@media(max-width:920){
+@media (max-width: 920px){
     .navbar .navTitle{
-    margin-top: 15px;
-    font-size: 12px !important;
-}
+        font-size: 0.85rem;
+    }
     .navbar p{
-    font-size: 9px !important;
-  
+        font-size: 10px;
+    }
+    #searchInput{
+        width: 140px;
+    }
 }
+
+@media (max-width: 768px){
+    .navbar{
+        padding-left: 3.5rem;
+        gap: 8px;
+    }
+    .navbar .navTitle{
+        font-size: 0.8rem;
+    }
+    .navbar .navTitle i{
+        display: none;
+    }
+    .navbar p{
+        display: none;
+    }
+    #searchInput{
+        width: 110px;
+    }
+    .dropDown{
+        right: 1rem;
+        top: 3.5rem;
+    }
+}
+
+@media (max-width: 480px){
+    .navbar{
+        padding-left: 3.2rem;
+        padding-right: 0.6rem;
+    }
+    .navbar .navTitle{
+        font-size: 0.72rem;
+        max-width: 90px;
+    }
 }
