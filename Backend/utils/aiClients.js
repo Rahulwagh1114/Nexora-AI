@@ -14,7 +14,7 @@ const geminiModel = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 // Internal helper — Groq ke liye (export nahi kiya, bahar se accessible nahi)
 async function askGroq(message) {
   const completion = await groq.chat.completions.create({
-    model: "llama-3.3-70b-versatile",
+    model: "openai/gpt-oss-120b",
     messages: [{ role: "user", content: message }],
   });
   return completion.choices[0].message.content;
